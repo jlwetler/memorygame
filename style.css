@@ -1,0 +1,43 @@
+body {
+    background: #FAFAFA;
+}
+
+.top{
+    font-family: 'Roboto';
+    font-size: 56px;
+    margin: 40px 0 40px 0;
+    text-align: center;
+}
+
+.card-table {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100vw - 200px);
+    justify-content: center;
+    margin: 0 auto 0 auto;
+}
+
+.card {
+    width: 150px;
+    height: 217.8px;
+    margin: 0 17px 34px 17px;
+    position: relative;
+    z-index: 1;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px -4px;
+    border: 1px black solid;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
