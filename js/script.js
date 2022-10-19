@@ -106,6 +106,7 @@ function finishGame () {
     if(finish === "sim" || finish === "s") {
         restart ();
     } else if (finish === "nao" || finish === "não" || finish === "n") {
+        alert("Obrigado por jogar.");
         return;
     } else {
         finishGame ();
