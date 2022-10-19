@@ -41,8 +41,8 @@ function distribuiCartas() {
     for(let i = 0; i < cardNumber; i++) {
         sortCards.innerHTML += `
         <div class="card">
-            <img src="imagens/cardback.jpg" class="face" onclick="viraCarta(this)" />
-            <img src="imagens/${newCards[i]} flip face" />
+            <img src="img/cardback.jpg" class="face" onclick="viraCarta(this)" />
+            <img src="img/${newCards[i]} flip face" />
         </div>    
         `;
     }
