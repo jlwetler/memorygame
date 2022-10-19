@@ -3,31 +3,33 @@ let newCards = [];
 let counter = 0 ;
 let cartasViradas = 0 ;
 let virou = false;
-let primeiraCarta, segundaCarta, naoVira;
+let primeiraCarta, segundaCarta, primeiroVerso, segundoVerso, naoVira, id;
+let segundos = 0;
 
 start();
 
 function start () {
     while (cardNumber < 4 || cardNumber > 14 || cardNumber % 2 === 1 || isNaN(cardNumber)) {
-        cardNumber = Number(prompt("Insira um número par de 4 a 14:"));
+        cardNumber = Number(prompt("Insira um número par de cartas entre 4 e 14:"));
     }
-
+    id = setInterval(time,1000);
     embaralhaCartas();    
     distribuiCartas();
-    
 }
 
 function embaralhaCartas() {
     const cards = [
-        'react.jpg" class="react ', 'react.jpg" class="react ', 'css.jpg" class="css ', 'css.jpg" class="css ', 
-        'html.jpg" class="html ', 'html.jpg" class="html ', 'javascript.jpg" class="javascript ', 'javascript.jpg" class="javascript ', 
-        'node.jpg" class="node ', 'node.jpg" class="node ', 'sql.jpg" class="sql ', 'sql.jpg" class="sql ',
-        'angular.jpg" class="angular ', 'angular.jpg" class="angular ', 
+        'react.jpg" class="react ', 'react.jpg" class="react ', 'css.jpg" class="css ',
+         'css.jpg" class="css ', 'html.jpg" class="html ', 'html.jpg" class="html ', 
+         'javascript.jpg" class="javascript ', 'javascript.jpg" class="javascript ', 
+        'node.jpg" class="node ', 'node.jpg" class="node ', 'sql.jpg" class="sql ', 
+        'sql.jpg" class="sql ', 'angular.jpg" class="angular ', 'angular.jpg" class="angular ', 
     ];
     for(let i = 0; i < cardNumber; i++){
         newCards.push(cards[i]);
         newCards.sort(comparador);
     }
+    
 }
 
 function comparador () {
@@ -46,6 +48,11 @@ function distribuiCartas() {
     }
 }
 
+function time() {
+    segundos ++;
+    const cronometro = document.querySelector(".time");
+    cronometro.innerHTML = segundos;
+}
 
 function viraCarta(element) {
 
@@ -81,6 +88,7 @@ function viraCarta(element) {
     }
 
     if(cartasViradas === cardNumber) {
+        clearInterval(id);
         setTimeout(finishGame, 1000);
     }
 }
@@ -94,26 +102,27 @@ function desviraCarta() {
 }
 
 function finishGame () {
-    const finish = prompt("Você ganhou em " + counter + " jogadas, deseja reiniciar a partida?")
-    if(finish === "sim") {
+    const finish = prompt("Você ganhou em " + counter + " jogadas e " + segundos + " segundos, deseja reiniciar a partida? (sim ou nao)")
+    if(finish === "sim" || finish === "s") {
         restart ();
+    } else if (finish === "nao" || finish === "não" || finish === "n") {
+        return;
+    } else {
+        finishGame ();
     }
 }
 
 function restart () {
-    const apaga = document.querySelector(".game");
-    apaga.innerHTML = `
-    <div class="top">
-    MEMORY CARD GAME
-    </div>
+    zeraVariaveis ()
+    start();
+}
 
-    <div class="card-table">
-
-    </div> 
-    `;
+function zeraVariaveis () {
+    const apaga = document.querySelector(".card-table");
+    apaga.innerHTML = "";
     cardNumber = 0;
     counter = 0;
     newCards = [];
-    cartasViradas = 0 ;
-    start();
+    cartasViradas = 0;
+    segundos = 0;
 }

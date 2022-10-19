@@ -1,12 +1,18 @@
 body {
-    background: #FAFAFA;
+    background: rgb(171, 238, 185);
 }
 
 .top{
-    font-family: 'Roboto';
-    font-size: 56px;
+    font-family: 'Righteous', cursive;
+    font-size: 40px;
     margin: 40px 0 40px 0;
     text-align: center;
+}
+
+.time {
+    position: fixed;
+    left: 15px;
+    top: 5px;
 }
 
 .card-table {
@@ -22,7 +28,7 @@ body {
     height: 217.8px;
     margin: 0 17px 34px 17px;
     position: relative;
-    z-index: 1;
+    flex-shrink: 0;
 }
 
 .face {
@@ -40,4 +46,3 @@ body {
 .flip {
     transform: rotateY(180deg);
 }
-
