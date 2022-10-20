@@ -24,8 +24,8 @@ body {
 }
 
 .card {
-    width: 60px;
-    height: 90px;
+    width: 120px;
+    height: 180px;
     margin: 0 12px 34px 12px;
     position: relative;
     flex-shrink: 0;
@@ -45,4 +45,15 @@ body {
 
 .flip {
     transform: rotateY(180deg);
+}
+
+@media (max-width: 614px) {
+
+    .card {
+        width: 50px;
+        height: 80px;
+        margin: 0 12px 34px 12px;
+        position: relative;
+        flex-shrink: 0;
+    }
 }
